@@ -1,0 +1,10 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  scroll-behavior: smooth;
+}
+.banner {
+  display: flex;
+  flex-direction: column;
+  margin-top: 70px;
+}

@@ -52,7 +52,7 @@
   z-index: 1;
 }
 .nav-left {
-  flex: 20%;
+  flex: 25%;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -63,7 +63,7 @@
   align-items: center;
 }
 .nav-right {
-  flex: 30%;
+  flex: 25%;
   display: flex;
   justify-content: space-around;
   align-items: center;

@@ -3,6 +3,7 @@ import './Navbar.css';
 import NavMenu from './NavMenu';
 // import Icon from '@material-ui/core/Icon';
 import { makeStyles } from '@material-ui/core/styles';
+
 import InputBase from '@material-ui/core/InputBase';
 import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
@@ -12,6 +13,8 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import SearchIcon from '@material-ui/icons/Search';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+// import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -23,6 +26,11 @@ const useStyles = makeStyles((theme) => ({
     input: {
         marginLeft: theme.spacing(1),
         width: "80%",
+        borderBottom: "1px solid black"
+    },
+    mobileInput: {
+        marginLeft: theme.spacing(1),
+        width: "70%",
         borderBottom: "1px solid black"
     },
     iconButton: {
@@ -42,6 +50,9 @@ const useStyles = makeStyles((theme) => ({
 
 function Navbar() {
     const classes = useStyles();
+    // const theme = useTheme();
+    const matches = useMediaQuery('(max-width:768px)');
+
     const [anchorEl, setAnchorEl] = React.useState(null);
     // const [drawerOpen, setDrawerOpen] = React.useState(false);
     // const handleDrawerOpen = () => {
@@ -51,11 +62,10 @@ function Navbar() {
     const [open, setOpen] = React.useState(false);
     const handleOpen = (e) => {
         setOpen(true);
-        handleDrawer(true);
+        // handleDrawer(true);
     }
     const handleDrawer = (a) => {
-        // console.log(bol);
-        // return a === true ? open;
+        a === false && setOpen(false);
     }
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -78,7 +88,7 @@ function Navbar() {
                 <div className="nav-center">
                     {/* <TextField id="standard-basic" label="Search" /> */}
                     <InputBase
-                        placeholder="Search For Products" className={classes.input}
+                        placeholder="Search For Products" className={matches ? classes.mobileInput : classes.input}
                         inputProps={{ 'aria-label': 'search google maps' }}
                     />
                     <IconButton type="submit" className={classes.iconButton} aria-label="search">

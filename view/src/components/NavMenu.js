@@ -35,28 +35,25 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function NavMenu(props) {
+    let openProp = props.open;
     const classes = useStyles();
     const theme = useTheme();
-    const openDrawer = props.handleDrawer;
+    // const openDrawer = props.handleDrawer;
     const [open, setOpen] = useState(false);
-    // useEffect(() => {
-    //     setOpen(openDrawer);
-    //     // console.log("Hello");
-    // })
-    // if (openDrawer === true) setOpen(true);
-    // console.log(props.handleDrawer(false));
-    console.log(props.open);
-    // setOpen(props.open);
-
-    // console.log(open);
-    // console.log(props);
-
-    const handleDrawerOpen = () => {
-        setOpen(true);
-    };
+    useEffect(() => {
+        if (props.open === true) {
+            setOpen(true);
+        }
+    }, [openProp]);
+    // const handleDrawerOpen = () => {
+    //     setOpen(true);
+    // };
 
     const handleDrawerClose = () => {
         setOpen(false);
+        openProp = false;
+        props.handleDrawer(false);
+        // props.open = false;
         // props.handleDrawer(false);
     };
     return (

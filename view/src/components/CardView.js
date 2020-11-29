@@ -7,7 +7,11 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 // import Button from '@material-ui/core/Button';
-import phone from './images/phone.jpg';
+// import phone from './images/phone.jpg';
+import GridListTile from '@material-ui/core/GridListTile';
+// import GridListTileBar from '@material-ui/core/GridListTileBar';
+
+
 // import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
@@ -16,7 +20,7 @@ const useStyles = makeStyles({
         margin: "2%"
     },
     mobileRoot: {
-        width: "100%"
+        width: "90%"
     }
     ,
     media: {
@@ -24,27 +28,59 @@ const useStyles = makeStyles({
     },
 });
 
-function CardView() {
+function CardView(props) {
     const matches = useMediaQuery('(max-width:768px)');
     const classes = useStyles();
-    return (
-        <>
-            <Card className={matches ? classes.mobileRoot : classes.root}>
-                <CardActionArea>
-                    <CardMedia
-                        className={classes.media}
-                        image={phone}
-                        title="iphone"
-                    />
-                    <CardContent>
-                        <h2>Iphone</h2>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis ea laborum, quo, libero obcaecati esse vel consectetur fugit tempora natus non maxime fugiat ex enim totam accusantium dicta velit laboriosam.</p>
-                    </CardContent>
-                </CardActionArea>
+    if (matches) {
+        return (
+            <>
+                <GridListTile>
 
-            </Card>
-        </>
-    )
+                    <Card className={matches ? classes.mobileRoot : classes.root}>
+                        <CardActionArea>
+
+                            <CardMedia
+                                className={classes.media}
+                                image={props.image}
+                                title={props.title}
+                            />
+
+                            <CardContent>
+                                <h2>Iphone</h2>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. </p>
+                            </CardContent>
+                        </CardActionArea>
+
+                    </Card>
+                </GridListTile>
+            </>
+        )
+    } else {
+        return (
+            <>
+                {/* <GridListTile> */}
+
+                <Card className={matches ? classes.mobileRoot : classes.root}>
+                    <CardActionArea>
+
+                        <CardMedia
+                            className={classes.media}
+                            image={props.image}
+                            title={props.title}
+                        />
+
+                        <CardContent>
+                            <h2>Iphone</h2>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. </p>
+                        </CardContent>
+                    </CardActionArea>
+
+                </Card>
+                {/* </GridListTile> */}
+            </>
+        )
+    }
+
 }
 
 export default CardView;

@@ -10,6 +10,8 @@ function App() {
       <Navbar />
       <Banner />
       <ProductCatalog />
+      <ProductCatalog />
+      <ProductCatalog />
     </div>
   );
 }

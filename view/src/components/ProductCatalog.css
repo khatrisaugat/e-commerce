@@ -1,0 +1,5 @@
+.slidingCatalog {
+  overflow-x: scroll;
+  width: 50%;
+  display: inline;
+}
